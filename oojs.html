@@ -12,11 +12,20 @@
   </body>
 
     <script>
-        const person = {
-            name: {first:'Bob',last:'Smith'},
-            age: 32,
-            bio() { console.log(`${this.name.first} ${this.name.last} is ${this.age} years old.`) },
-            introduceSelf() { console.log(`Hello, I am ${this.name['first']} -${this.name['last']}.`) }
-        };
+        class Person {
+
+          name2;
+
+          constructor(name) {
+            this.name = name;
+          }
+
+          introduceSelf() {
+            console.log(`Hello, my name is ${this.name}.`);
+          }
+        }
+
+        const harry = new Person('Harry');
+        harry.introduceSelf();
     </script>
 </html>
