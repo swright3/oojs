@@ -76,6 +76,7 @@ class EvilCircle extends Shape {
 
                 if (distance < this.size + ball.size) {
                     ball.exists = false;
+                    updateBallCount();
                 }
             }
         }
@@ -158,4 +159,20 @@ function loop() {
     requestAnimationFrame(loop);
 }
 
+const updateBallCount = () => {
+    let count = 0;
+    for (const ball of balls) {
+        if (ball.exists) {count += 1}
+    }
+    const scoreCounter = document.getElementsByTagName('p')[0];
+    scoreCounter.innerHTML = `Ball count: ${count}`;
+}
+
+const scoreCounter = document.createElement('p');
+scoreCounter.innerHTML = "Ball count: 0";
+scoreCounter.setAttribute('style','position: absolute; margin: 0; top: 35px; right: 5px;color: #aaa;');
+const heading1 = document.getElementsByTagName('h1')[0];
+heading1.appendChild(scoreCounter);
+
+updateBallCount();
 loop();
